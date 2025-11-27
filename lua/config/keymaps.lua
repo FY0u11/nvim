@@ -7,6 +7,19 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to window below" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to window above" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
 
+-- Move by display lines (wrapped lines) instead of actual lines
+vim.keymap.set("n", "j", "gj", { desc = "Move down by display line" })
+vim.keymap.set("n", "k", "gk", { desc = "Move up by display line" })
+
+-- Switch to normal mode
+vim.keymap.set("i", "jk", "<C-[>", { desc = "Go back to normal mode" })
+
+-- Resize windows
+vim.keymap.set("n", "<C-Left>", "<C-w><", { desc = "Decrease window width" })
+vim.keymap.set("n", "<C-Down>", "<C-w>-", { desc = "Decrease window height" })
+vim.keymap.set("n", "<C-Up>", "<C-w>+", { desc = "Increase window height" })
+vim.keymap.set("n", "<C-Right>", "<C-w>>", { desc = "Increase window width" })
+
 -- Disable search highlights
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlights" })
 

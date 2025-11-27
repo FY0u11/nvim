@@ -46,6 +46,11 @@ return {
 					return "text"
 				end,
 			},
+			terminal = {
+				win = {
+					height = 0.3,
+				},
+			},
 		},
 		keys = {
 			-- Top Pickers & Explorer
@@ -499,13 +504,15 @@ return {
 					Snacks.terminal()
 				end,
 				desc = "Toggle Terminal",
+				mode = { "n", "t" },
 			},
 			{
 				"<c-_>",
 				function()
 					Snacks.terminal()
 				end,
-				desc = "Needed to terminal work",
+				desc = "which_key_ignore",
+				mode = { "n", "t" },
 			},
 			{
 				"]]",

@@ -24,10 +24,9 @@ return {
 				local function map(mode, lhs, rhs, desc)
 					vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, noremap = true, silent = true, desc = desc })
 				end
-				map("n", "<leader>cs", vim.lsp.buf.document_symbol, "Document symbols")
 				-- Documentation
-				map("n", "K", vim.lsp.buf.signature_help, "Show documentation")
-				map("n", "<C-k>", vim.lsp.buf.signature_help, "Show signature help")
+				map("n", "K", vim.lsp.buf.hover, "Show documentation")
+				map("n", "gk", vim.lsp.buf.signature_help, "Show signature help")
 				-- Code actions
 				map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code action")
 				map("n", "<leader>cr", vim.lsp.buf.rename, "Rename symbol")

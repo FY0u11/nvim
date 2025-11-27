@@ -4,12 +4,24 @@ return {
 	config = function()
 		require("lualine").setup({
 			options = {
-				theme = "auto", -- Matches your colorscheme
+				theme = "auto",
 				component_separators = { left = "", right = "" },
 				section_separators = { left = "", right = "" },
 			},
 			sections = {
-				lualine_a = { "mode" },
+				lualine_a = {
+					"mode",
+					{
+						function()
+							local reg = vim.fn.reg_recording()
+							if reg == "" then
+								return ""
+							end
+							return "REC @" .. reg
+						end,
+						color = { fg = "#000000", bg = "#ff9e64", gui = "bold" },
+					},
+				},
 				lualine_b = { "branch", "diff", "diagnostics" },
 				lualine_c = { "filename" },
 				lualine_x = { "encoding", "fileformat", "filetype" },
