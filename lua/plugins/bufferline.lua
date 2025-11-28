@@ -41,7 +41,6 @@ return {
 				always_show_bufferline = true,
 			},
 		})
-
 		-- Keymaps for buffer navigation
 		vim.keymap.set("n", "<Tab>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
 		vim.keymap.set("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Previous buffer" })

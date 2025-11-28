@@ -1,7 +1,7 @@
 return {
-  "lukas-reineke/virt-column.nvim",
-  opts = {
-    char = "▕", -- Thin line character (alternatives: "│", "┆", "┊", "▏")
-    virtcolumn = "80",
-  },
+	"lukas-reineke/virt-column.nvim",
+	opts = {
+		char = "▕", -- Thin line character (alternatives: "│", "┆", "┊", "▏")
+		virtcolumn = "80",
+	},
 }

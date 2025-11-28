@@ -52,7 +52,6 @@ return {
 				for _, parser in ipairs(opts.ensure_installed) do
 					local filetypes = parser -- In this case, parser is the filetype/language name
 					vim.treesitter.language.register(parser, filetypes)
-
 					vim.api.nvim_create_autocmd({ "FileType" }, {
 						pattern = filetypes,
 						callback = function(event)
@@ -61,18 +60,15 @@ return {
 					})
 				end
 			end
-
 			-- Auto-install and start parsers for any buffer
 			vim.api.nvim_create_autocmd({ "BufRead" }, {
 				callback = function(event)
 					local bufnr = event.buf
 					local filetype = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
-
 					-- Skip if no filetype
 					if filetype == "" then
 						return
 					end
-
 					-- Check if this filetype is already handled by explicit opts.ensure_installed config
 					for _, filetypes in pairs(opts.ensure_installed) do
 						local ft_table = type(filetypes) == "table" and filetypes or { filetypes }
@@ -80,7 +76,6 @@ return {
 							return -- Already handled above
 						end
 					end
-
 					-- Get parser name based on filetype
 					local parser_name = vim.treesitter.language.get_lang(filetype) -- might return filetype (not helpful)
 					if not parser_name then
@@ -91,17 +86,13 @@ return {
 					if not parser_configs[parser_name] then
 						return -- Parser not available, skip silently
 					end
-
 					local parser_installed = pcall(vim.treesitter.get_parser, bufnr, parser_name)
-
 					if not parser_installed then
 						-- If not installed, install parser synchronously
 						require("nvim-treesitter").install({ parser_name }):wait(30000)
 					end
-
 					-- let's check again
 					parser_installed = pcall(vim.treesitter.get_parser, bufnr, parser_name)
-
 					if parser_installed then
 						-- Start treesitter for this buffer
 						vim.treesitter.start(bufnr, parser_name)
@@ -168,5 +159,20 @@ return {
 		},
 		---@module "nvim-treesitter-textobjects"
 		opts = { multiwindow = true },
+	},
+	{
+		"MeanderingProgrammer/treesitter-modules.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		opts = {
+			incremental_selection = {
+				enable = true,
+				keymaps = {
+					init_selection = "<C-space>",
+					node_incremental = "<C-space>",
+					scope_incremental = false,
+					node_decremental = "<BS>",
+				},
+			},
+		},
 	},
 }

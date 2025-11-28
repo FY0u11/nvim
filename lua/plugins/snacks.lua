@@ -6,7 +6,31 @@ return {
 		---@type snacks.Config
 		opts = {
 			bigfile = { enabled = true },
-			dashboard = { enabled = true },
+			dashboard = {
+				enabled = true,
+				preset = {
+					header = [[
+ _____                                                                    _____ 
+( ___ )                                                                  ( ___ )
+ |   |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|   | 
+ |   | ██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗     |   | 
+ |   | ██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝     |   | 
+ |   | ██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗       |   | 
+ |   | ██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝       |   | 
+ |   | ╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗ ██╗ |   | 
+ |   |  ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝ ╚█║ |   | 
+ |   |                                                                 ╚╝ |   | 
+ |   |             ███████╗██╗   ██╗ ██████╗ ██╗   ██╗ ██╗ ██╗            |   | 
+ |   |             ██╔════╝╚██╗ ██╔╝██╔═████╗██║   ██║███║███║            |   | 
+ |   |             █████╗   ╚████╔╝ ██║██╔██║██║   ██║╚██║╚██║            |   | 
+ |   |             ██╔══╝    ╚██╔╝  ████╔╝██║██║   ██║ ██║ ██║            |   | 
+ |   |             ██║        ██║   ╚██████╔╝╚██████╔╝ ██║ ██║            |   | 
+ |   |             ╚═╝        ╚═╝    ╚═════╝  ╚═════╝  ╚═╝ ╚═╝            |   | 
+ |___|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|___| 
+(_____)                                                                  (_____)
+          ]],
+				},
+			},
 			explorer = { enabled = true },
 			indent = { enabled = true },
 			input = { enabled = true },
@@ -20,26 +44,21 @@ return {
 			scroll = { enabled = true },
 			statuscolumn = {
 				enabled = true,
-				left = { "mark", "sign" }, -- priority of signs on the left (high to low)
-				right = { "fold", "git" }, -- priority of signs on the right (high to low)
+				left = { "mark", "sign" },
+				right = { "fold", "git" },
 				folds = {
-					open = false, -- show open fold icons
-					git_hl = false, -- use Git Signs hl for fold icons
+					open = false,
+					git_hl = false,
 				},
 				git = {
-					-- patterns to match Git signs
 					patterns = { "GitSign", "MiniDiffSign" },
 				},
-				refresh = 50, -- refresh at most every 50ms
+				refresh = 50,
 			},
 			words = { enabled = true },
-			styles = {
-				notification = {
-					-- wo = { wrap = true } -- Wrap notifications
-				},
-			},
 			scratch = {
 				ft = function()
+					-- Make scratch buffer to be "text" filetype, except for lua scripts
 					if vim.bo.buftype == "" and vim.bo.filetype == "lua" then
 						return "lua"
 					end
@@ -50,6 +69,10 @@ return {
 				win = {
 					height = 0.3,
 				},
+			},
+			lazygit = {
+				win = { height = 0.9 },
+				configure = false,
 			},
 		},
 		keys = {
@@ -299,6 +322,13 @@ return {
 				desc = "Help Pages",
 			},
 			{
+				"<leader>sH",
+				function()
+					Snacks.picker.highlights()
+				end,
+				desc = "Highlights",
+			},
+			{
 				"<leader>si",
 				function()
 					Snacks.picker.icons()
@@ -542,7 +572,6 @@ return {
 					_G.bt = function()
 						Snacks.debug.backtrace()
 					end
-
 					-- Override print to use snacks for `:=` command
 					if vim.fn.has("nvim-0.11") == 1 then
 						vim._print = function(_, ...)
@@ -551,7 +580,6 @@ return {
 					else
 						vim.print = _G.dd
 					end
-
 					-- Create some toggle mappings
 					Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
 					Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")

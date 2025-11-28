@@ -1,4 +1,4 @@
--- diagnostict
+-- Diagnostict
 vim.diagnostic.config({
 	virtual_text = {
 		spacing = 4, -- Space between code and message
