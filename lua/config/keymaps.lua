@@ -65,6 +65,9 @@ end, { desc = "Close other buffers" })
 -- Entire file text object with 'g'
 vim.keymap.set({ "o", "x" }, "ig", ":<C-u>normal! ggVG<CR>", { desc = "Inside entire file" })
 vim.keymap.set({ "o", "x" }, "ag", ":<C-u>normal! ggVG<CR>", { desc = "Around entire file" })
+-- Git diff accept keys
+vim.keymap.set({ "n", "x" }, "<leader>gh", ":diffget LOCAL<CR>", { desc = "Get from LOCAL" })
+vim.keymap.set({ "n", "x" }, "<leader>gl", ":diffget REMOTE<CR>", { desc = "Get from REMOTE" })
 -------------------------
 -- Unmap unneded keys ---
 -------------------------
