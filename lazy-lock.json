@@ -25,7 +25,7 @@
   "nvim-notify": { "branch": "master", "commit": "8701bece920b38ea289b457f902e2ad184131a5d" },
   "nvim-treesitter": { "branch": "main", "commit": "d56ed0f7f90d6492ce422f5e0a9cb36d3169eb96" },
   "nvim-treesitter-context": { "branch": "master", "commit": "660861b1849256398f70450afdf93908d28dc945" },
-  "nvim-treesitter-textobjects": { "branch": "main", "commit": "6f2dc7e41a648ec90314f0f94b5f574c75c5c58b" },
+  "nvim-treesitter-textobjects": { "branch": "main", "commit": "63c4dce4a56312ef1bdeafd16bdefa008fcc950a" },
   "nvim-ufo": { "branch": "main", "commit": "72d54c31079d38d8dfc5456131b1d0fb5c0264b0" },
   "nvim-web-devicons": { "branch": "master", "commit": "8dcb311b0c92d460fac00eac706abd43d94d68af" },
   "oxocarbon.nvim": { "branch": "main", "commit": "9f85f6090322f39b11ae04a343d4eb9d12a86897" },

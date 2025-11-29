@@ -25,13 +25,15 @@ return {
 					vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, noremap = true, silent = true, desc = desc })
 				end
 				-- Documentation
-				map("n", "K", vim.lsp.buf.hover, "Show documentation")
 				map("n", "gk", vim.lsp.buf.signature_help, "Show signature help")
 				-- Code actions
 				map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code action")
 				map("n", "<leader>cr", vim.lsp.buf.rename, "Rename symbol")
 				map("n", "<leader>cd", vim.diagnostic.open_float, "Show diagnostic")
-				map("n", "<leader>cq", vim.diagnostic.setloclist, "Show diagnostics list")
+				-- Go specific
+				if vim.bo[bufnr].filetype == "go" then
+					map("n", "<leader>cg", ":!go run .<CR>", "Go run")
+				end
 			end
 			for name, config in pairs(servers) do
 				if not config then
