@@ -26,6 +26,9 @@ vim.keymap.set("n", "<leader>qq", "<cmd>confirm qa<cr>", { desc = "Quit" })
 vim.keymap.set("n", "<leader>qQ", "<cmd>qa!<cr>", { desc = "Force quit" })
 -- Make replacing work like it should be
 vim.keymap.set("x", "p", '"_dP', { desc = "Paste without yanking" })
+-- Toggle auto formatting
+vim.keymap.set("n", "<leader>cF", "<cmd>FormatToggle<cr>", { desc = "Toggle auto format globally" })
+vim.keymap.set("n", "<leader>cf", "<cmd>FormatToggleBuffer<cr>", { desc = "Toggle auto format for buffer" })
 -- Close other not modified buffers
 vim.keymap.set("n", "<leader>bo", function()
 	local current = vim.api.nvim_get_current_buf()
@@ -65,9 +68,6 @@ end, { desc = "Close other buffers" })
 -- Entire file text object with 'g'
 vim.keymap.set({ "o", "x" }, "ig", ":<C-u>normal! ggVG<CR>", { desc = "Inside entire file" })
 vim.keymap.set({ "o", "x" }, "ag", ":<C-u>normal! ggVG<CR>", { desc = "Around entire file" })
--- Git diff accept keys
-vim.keymap.set({ "n", "x" }, "<leader>gh", ":diffget LOCAL<CR>", { desc = "Get from LOCAL" })
-vim.keymap.set({ "n", "x" }, "<leader>gl", ":diffget REMOTE<CR>", { desc = "Get from REMOTE" })
 -------------------------
 -- Unmap unneded keys ---
 -------------------------

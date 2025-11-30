@@ -31,6 +31,7 @@ require("lazy").setup({
 	-- Automatically check for plugin updates
 	checker = { enabled = true },
 })
+require("config.autocmd")
 require("config.keymaps")
 require("config.options")
 require("config.highlights")
