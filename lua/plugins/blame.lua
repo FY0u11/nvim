@@ -62,10 +62,10 @@ return {
 			local my_format = function(line_porcelain, config, idx)
 				local hash = string.sub(line_porcelain.hash, 0, 7)
 				local line_with_hl = {}
-				local is_commited = hash ~= "0000000"
+				local is_committed = hash ~= "0000000"
 				local date_text
 				local default_hl = "Comment"
-				if is_commited then
+				if is_committed then
 					if config.relative_date_if_recent then
 						date_text = blame_utils.format_recent_date(config.date_format, line_porcelain.committer_time)
 					else
