@@ -15,6 +15,7 @@ return {
 			{ "<leader>q", group = "session" },
 			{ "<leader>s", group = "search" },
 			{ "<leader>u", group = "ui" },
+			{ "<leader>d", group = "debug" },
 		})
 	end,
 }
