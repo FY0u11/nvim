@@ -10,7 +10,7 @@ vim.keymap.set("n", "j", "gj", { desc = "Move down by display line" })
 vim.keymap.set("n", "k", "gk", { desc = "Move up by display line" })
 -- Switch to normal mode
 vim.keymap.set("i", "jk", "<C-[>", { desc = "Go back to normal mode" })
--- Resize windows
+-- Re-size windows
 vim.keymap.set("n", "<C-Left>", "<C-w><", { desc = "Decrease window width" })
 vim.keymap.set("n", "<C-Down>", "<C-w>-", { desc = "Decrease window height" })
 vim.keymap.set("n", "<C-Up>", "<C-w>+", { desc = "Increase window height" })
@@ -26,9 +26,6 @@ vim.keymap.set("n", "<leader>qq", "<cmd>confirm qa<cr>", { desc = "Quit" })
 vim.keymap.set("n", "<leader>qQ", "<cmd>qa!<cr>", { desc = "Force quit" })
 -- Make replacing work like it should be
 vim.keymap.set("x", "p", '"_dP', { desc = "Paste without yanking" })
--- Toggle auto formatting
-vim.keymap.set("n", "<leader>cF", "<cmd>FormatToggle<cr>", { desc = "Toggle auto format globally" })
-vim.keymap.set("n", "<leader>cf", "<cmd>FormatToggleBuffer<cr>", { desc = "Toggle auto format for buffer" })
 -- Close other not modified buffers
 vim.keymap.set("n", "<leader>bo", function()
 	local current = vim.api.nvim_get_current_buf()
@@ -69,8 +66,8 @@ end, { desc = "Close other buffers" })
 vim.keymap.set({ "o", "x" }, "ig", ":<C-u>normal! ggVG<CR>", { desc = "Inside entire file" })
 vim.keymap.set({ "o", "x" }, "ag", ":<C-u>normal! ggVG<CR>", { desc = "Around entire file" })
 -------------------------
--- Unmap unneded keys ---
+-- Unmap unneeded keys ---
 -------------------------
-vim.keymap.del("n", "gO") -- Dupplicate of <leader>cs
-vim.keymap.del("n", "<leader>x") -- Dupplicate of <leader>bd
+vim.keymap.del("n", "gO") -- Duplicate of <leader>cs
+vim.keymap.del("n", "<leader>x") -- Duplicate of <leader>bd
 vim.keymap.del("n", "<leader>X") -- Neovim news <leader>bo

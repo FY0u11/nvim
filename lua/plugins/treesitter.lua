@@ -1,5 +1,3 @@
--- modified version of code from this config
---https://github.com/fredrikaverpil/dotfiles/blob/main/nvim-fredrik/lua/fredrik/plugins/core/treesitter.lua
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
