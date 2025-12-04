@@ -18,6 +18,8 @@ return {
 				gopls = false,
 				rust_analyzer = false,
 				ts_ls = false,
+				jsonls = false,
+				yamlls = false,
 			}
 			-- Reusable on_attach function for all LSP servers
 			local on_attach = function(_, bufnr)
