@@ -20,6 +20,8 @@ return {
 				ts_ls = false,
 				jsonls = false,
 				yamlls = false,
+				dockerls = false,
+				docker_compose_language_service = false,
 			}
 			-- Reusable on_attach function for all LSP servers
 			local on_attach = function(_, bufnr)
